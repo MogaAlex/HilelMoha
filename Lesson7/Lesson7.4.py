@@ -4,12 +4,8 @@ def common_elements():
     for i in range(0,100):
         if i%3==0:
             set1.add(i)
-        else:
-            continue
         if i%5==0:
             set2.add(i)
-        else:
-            continue
     return set1.intersection(set2)
 
 
