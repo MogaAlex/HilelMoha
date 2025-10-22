@@ -13,5 +13,5 @@ def common_elements():
     return set1.intersection(set2)
 
 assert common_elements() == {0, 75, 45, 15, 90, 60, 30}
-
+print("OK")
 
