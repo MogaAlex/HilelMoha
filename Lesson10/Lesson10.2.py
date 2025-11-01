@@ -1,5 +1,6 @@
 import string
-def first_word(text):
+
+def first_word(text: str) -> str:
     # print(string.punctuation.find("'")) # №6
     new_string_punctuation = string.punctuation[:6] + string.punctuation[7:]
     for i in new_string_punctuation:
