@@ -1,12 +1,17 @@
-def generate_cube_numbers(end: int) -> list:
+from inspect import isgenerator
+from typing import Generator
+
+def generate_cube_numbers(end: int) -> Generator[int, None, None]:
     for i in range(2, end):
         if i**3 <= end:
             yield i**3
 
 
-from inspect import isgenerator
+
+
 
 gen = generate_cube_numbers(1000)
+
 assert isgenerator(gen) == True, 'Test0'
 assert list(generate_cube_numbers(10)) == [8], 'оскільки воно менше 10.'
 assert list(generate_cube_numbers(100)) == [8, 27, 64], '5 у кубі це 125, а воно вже більше 100'

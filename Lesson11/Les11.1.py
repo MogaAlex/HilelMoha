@@ -1,3 +1,5 @@
+from typing import Generator
+
 def simple_number(n: int) -> bool:
     count=0
     for j in range(1,n+1):
@@ -5,12 +7,11 @@ def simple_number(n: int) -> bool:
             count+= 1
     if count == 2:
         return True
-
     else:
         return False
 
 
-def prime_generator(end: int) -> list:
+def prime_generator(end: int) -> Generator[int, None, None]:
     for i in range(1,end+1):
         if simple_number(i) == True:
             yield i
