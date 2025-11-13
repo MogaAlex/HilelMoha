@@ -18,7 +18,6 @@ class Counter:
         if self.current < self.max_value:
             self.current += 1
         else:
-
             e = "Достигнут максимум"
             raise ValueError(e)
 
