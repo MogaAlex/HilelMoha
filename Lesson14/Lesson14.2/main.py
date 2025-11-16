@@ -1,56 +1,24 @@
-class Human:
+import mod2
+import mod3
+import zipfile
+import codecs
 
-    def __init__(self, gender, age, first_name, last_name):
-        self.gender = gender
-        self.age = age
-        self.first_name = first_name
-        self.last_name = last_name
+with zipfile.ZipFile('my_archive.zip', 'w') as myzip:
+    with codecs.open("result_file.txt", 'w', 'utf-8') as result:
+        st1 = mod2.Student('Male', 30, 'Steve', 'Jobs', 'AN142')
+        st2 = mod2.Student('Female', 25, 'Liza', 'Taylor', 'AN145')
+        gr = mod3.Group('PD1')
+        gr.add_student(st1)
+        gr.add_student(st2)
+        result.write(str(gr))
 
+        assert gr.find_student('Jobs') == st1  # 'Steve Jobs'
+        assert gr.find_student('Jobs2') is None
+        gr.delete_student('Taylor')
 
-    def __str__(self):
-        return f'{self.gender} {self.age} {self.first_name} {self.last_name}'
-
-
-class Student(Human):
-
-    def __init__(self, gender, age, first_name, last_name, record_book):
-        self.gender = gender
-        self.age = age
-        self.first_name = first_name
-        self.last_name = last_name
-        self.record_book = record_book
-
-    def __str__(self):
-        return f'{self.gender} {self.age} {self.first_name} {self.last_name} {self.record_book}'
-
-
-class Group:
-
-    def __init__(self, number):
-        self.number = number
-        self.group = set()
-
-    def add_student(self, student):
-        self.group.add(student)
-
-
-    def delete_student(self, last_name):
-        for student in list(self.group):
-            if last_name in student.last_name:
-                self.group.remove(student)
-            else:
-                None
-
-    def find_student(self, last_name):
-        for student in self.group:
-            if last_name in student.last_name:
-                return student
-            else:
-                None
-
-
-    def __str__(self):
-        all_students = ''
-        for student in self.group:
-            all_students += f'{student.first_name} {student.last_name} {student.age} {student.gender} {student.record_book}\n'
-        return f'Number:{self.number}\n{all_students} '
+        result.write(str(gr))  # Only one student
+    myzip.write('main.py')
+    myzip.write('mod1.py')
+    myzip.write('mod2.py')
+    myzip.write('mod3.py')
+    myzip.write('result_file.txt')
