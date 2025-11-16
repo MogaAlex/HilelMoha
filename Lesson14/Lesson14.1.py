@@ -23,6 +23,9 @@ class Student(Human):
     def __str__(self):
         return f'{self.gender} {self.age} {self.first_name} {self.last_name} {self.record_book}'
 
+# Код для домашней работы 14.1
+class manystudents(Exception):
+    pass
 
 class Group:
 
@@ -33,11 +36,13 @@ class Group:
 
     def add_student(self, student):
         self.group.add(student)
-        # Код для домашней работы 14.1
+
         self.count += 1
         if self.count > 10:
-            raise ValueError("Больше десяти")
+            raise manystudents("Больше десяти")
         # -------------------------------------------------------------------------------------------
+    def Error(self):
+        pass
 
     def delete_student(self, last_name):
         for student in list(self.group):
@@ -58,6 +63,7 @@ class Group:
         for student in self.group:
             all_students += f'{student.first_name} {student.last_name} {student.age} {student.gender} {student.record_book}\n'
         return f'Number:{self.number}\n{all_students} '
+
 
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
@@ -89,6 +95,6 @@ print(gr)
 
 try:
     gr.add_student(st11)
-except ValueError as e:
+except manystudents as e:
     print(e)
 
