@@ -24,7 +24,7 @@ class Student(Human):
         return f'{self.gender} {self.age} {self.first_name} {self.last_name} {self.record_book}'
 
 # Код для домашней работы 14.1
-class manystudents(Exception):
+class ManyStudents(Exception):
     pass
 
 class Group:
@@ -39,10 +39,8 @@ class Group:
 
         self.count += 1
         if self.count > 10:
-            raise manystudents("Больше десяти")
+            raise ManyStudents("Больше десяти")
         # -------------------------------------------------------------------------------------------
-    def Error(self):
-        pass
 
     def delete_student(self, last_name):
         for student in list(self.group):
@@ -95,6 +93,6 @@ print(gr)
 
 try:
     gr.add_student(st11)
-except manystudents as e:
+except ManyStudents as e:
     print(e)
 
