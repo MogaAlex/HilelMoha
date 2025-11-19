@@ -1,15 +1,18 @@
 class Fraction:
     def __init__(self, a, b):
+        # if a >= b:
+        #     raise ValueError("Число >= 1")
+        # if b == 0:
+        #     raise ValueError("знам == 0")
         self.a = a
         self.b = b
 
     # def correct_fraction(self):
     #     if self.a >= self.b:
     #         raise ValueError("Число >= 1")
-    #     elif self.b == 0:
+    #     if self.b == 0:
     #         raise ValueError("знам == 0")
-    #     else:
-    #         print("Работаем")
+
 
     def __mul__(self, other):
         return Fraction(self.a * other.a , self.b * other.b)
